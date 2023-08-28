@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+	crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="css/style.css">
+	
+<title>Edição</title>
+</head>
+<body style=" display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #252526;">
+	<header>
+<!-- navbar -->
+		<nav class="navbar navbar-expand-lg fixed-top navbar-dark" style="	position: fixed;
+ 	background-color: #252526;
+ 	display: flex;">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/"><img
+					src="https://images.emojiterra.com/google/android-12l/512px/1f4b2.png"
+					width="50px"></a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item"><a class="nav-link" aria-current="page"
+							href="/">Inicio</a></li>
+						<li class="nav-item"><a class="nav-link "
+							href="/cadastroDespesa">Nova despesa</a></li>
+						<li><a class="nav-link" href="/lista">Visualisar Despesas</a>
+						</li>
+						<li class="nav-item"><a class="nav-link active"
+							href="/editarListaDespesas">Editar despesas</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+<!-- navbar -->
+	</header>
+
+	<div style="background-color: #252526; border-radius: 50px; padding: 40px; margin-top: 250px; width: 80%; height: 450px; color: #fff;">
+
+		<h1>Editar despesa:</h1>
+
+
+		<form class="cadastrof" action="#"
+			th:action="@{/atualizar/{id}(id=${despesas.id})}"
+			th:object="${despesas}" method="POST"
+			>
+
+
+			<div class="mb-3">
+				<label for="nomeDaDespesa" class="form-label">Nome da
+					despesa: </label> <input type="text" class="form-control" name="nome"
+					th:field="*{nome}"> <span
+					th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>
+
+
+			<!-- Inicio campo categoria da despesa -->
+			<label for="categoria">Selecione a categoria:</label>
+			<!-- aqui a primeira option foi altrada pra 'value' pois precisa retornar o campo categoria do cadastro			 -->
+			<select class="form-select" name="categoria" th:field="*{categoria}">
+				<option value="#">Selecione a categoria da despesa</option>
+				<option value="Alimentação">Alimentação</option>
+				<option value="Transporte">Transporte</option>
+				<option value="Lazer">Lazer</option>
+				<option value="Saúde e Higiene">Saúde e Higiene</option>
+				<option value="Educação">Educação</option>
+				<option value="Vestuário">Vestuário</option>
+				<option value="Domésticos">Domésticos</option>
+				<option value="Investimentos">Investimentos</option>
+			</select>
+			<!-- Fim campo categoria da despesa  -->
+
+
+
+			<div class="mb-3">
+				<label for="valorDespesa" class="form-label">Valor da
+					Despesa:</label> <input type="number" class="form-control" name="valor"
+					th:field="*{valor}"> <span
+					th:if="${#fields.hasErrors('valor')}" th:errors="*{valor}"></span>
+			</div>
+
+
+
+
+			<div class="mb-3">
+				<label for="dataDespesa" class="form-label">Data da Despesa:</label>
+				<input type="text" class="form-control" name="data"
+					th:field="*{data}"> <span
+					th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></span>
+			</div>
+
+
+			<button type="submit" class="botaoCadastrar1"
+				style="background-color: #2b7500; color: #252526; border-radius: 20px; padding: 10px 20px; border: none; cursor: pointer; text-align: center; margin-top: 100px; font-weight: bold;"
+				onclick="return confirm('Tem certeza que deseja editar essa despesa?')">Concluir edição</button>
+				
+			<a href="/editarListaDespesas" style="background-color: #fff; color: #252526; border-radius: 20px; padding: 10px 20px; border: none; cursor: pointer; text-align: center; margin-top: 100px; font-weight: bold;" >Voltar</a>
+
+		</form>
+
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+		crossorigin="anonymous"></script>
+		
+		
+</body>
+</html>

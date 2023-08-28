@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" href="css/style.css">
+
+<title>Cadastro de despesa</title>
+</head>
+<body>
+	<header>
+<!-- navbar -->
+		<nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/"><img
+					src="https://images.emojiterra.com/google/android-12l/512px/1f4b2.png"
+					width="50px"></a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item"><a class="nav-link" aria-current="page"
+							href="/">Inicio</a></li>
+						<li class="nav-item"><a class="nav-link active"
+							href="/cadastroDespesa">Nova despesa</a></li>
+						<li><a class="nav-link" href="/lista">Visualisar Despesas</a>
+						</li>
+						<li class="nav-item"><a class="nav-link"
+							href="/editarListaDespesas">Editar despesas</a></li>
+
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+<!-- navbar -->
+	</header>
+
+	<div class="container">
+	
+
+	
+	
+		<div>
+			<h1>Nova despesa:</h1>
+			<h7>Preencha ao lado as informações de sua despesa,<br>
+			caso preencha com algum erro, <br>
+			poderá acessar a página de editar despesas no menu acima</h7>
+		</div>
+
+<!-- formulario de cadastro de despesa -->
+		<form class="cadastrof" action="#" th:action="@{cadastrarDespesa}"
+			th:object="${despesas}" method="POST">
+
+
+			<div class="mb-3">
+				<label for="nomeDaDespesa" class="form-label">Nome da
+					despesa: </label> <input type="text" class="form-control" name="nome" required>
+			</div>
+
+			 <!-- campo de seleção do tipo de categoria --> 
+
+			<label for="categoria">Selecione a categoria:</label> <select
+				class="form-select" name="categoria"  required>
+
+				<option selected required></option>
+				<option value="Alimentação">Alimentação</option>
+				<option value="Transporte">Transporte</option>
+				<option value="Lazer">Lazer</option>
+				<option value="Saúde e Higiene">Saúde e Higiene</option>
+				<option value="Educação">Educação</option>
+				<option value="Vestuário">Vestuário</option>
+				<option value="Supérfluos">Supérfluos</option>
+				<option value="Domésticos">Domésticos</option>
+				<option value="Investimentos">Investimentos</option>
+			</select>
+
+			<!-- campo de seleção do tipo de categoria -->
+
+
+			<div class="mb-3">
+				<label for="valorDespesa" class="form-label">Valor da
+					Despesa:</label> <input type="number" lang="pt-BR" placeholder="0.000,00"
+					class="form-control"  step="0.01" min="0.01" name="valor" required>
+			</div>
+			
+
+			<div class="mb-3">
+				<label for="dataDespesa" class="form-label">Data da Despesa:</label>
+				<input type="text" class="form-control" name="data" required>
+			</div>
+			
+
+			<div class=botaocadastrar>
+				<button type="submit" class="botaoCadastrar">Cadastrar</button>
+			</div>
+			
+
+			
+
+</div>
+
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+			crossorigin="anonymous"></script>
+
+	</div>
+</body>
+</html>
